@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string toLower(string sentence)
+string toLower(string sentence) /** toLower() **/
 {
 	string value;
 	
@@ -16,7 +16,7 @@ string toLower(string sentence)
 	return value;
 }
 
-string grower(string sentence)
+string grower(string sentence) /** grower() **/
 {
 	sentence[0] = toupper(sentence[0]);
 	

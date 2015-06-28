@@ -29,7 +29,6 @@ Bot::Bot() /** constructor **/
 	memory["i love you"]["i want to get married with you"] = 10;
 	memory["are you a bot ?"]["yes, and my name is Turing"] = 10;
 	memory["i don't trust you"]["are you kidding me ?"] = 10;
-	memory["i hate you !"]["you are a crazy man"] = 10;
 	memory["i hate you"]["you are a crazy man"] = 10;
 	memory["what's up ?"]["i have eaten a chicken"] = 10;
 	memory["do you love me ?"]["i don't love you, human"] = 10;
@@ -42,6 +41,9 @@ Bot::Bot() /** constructor **/
 	memory["yo"]["you think I'm your friend ?"] = 10;
 	memory["you are a bot"]["yes, but everyone know it"] = 10;
 	memory["nobody cares"]["i hate you stupid human"] = 10;
+	memory["ok"]["why are you so bad with me ?"] = 10;
+	memory["ok"]["why are you so bad with me ?"] = 10;
+	memory["i don't care"]["ok."] = 10;
 }
 
 Bot::~Bot() /** destructor **/
@@ -81,7 +83,7 @@ void Bot::talk() /** void talk() **/
 			cout << grower(sentence) << endl;
 			
 			getline(cin, answer);
-			answer = toLower(answer);
+			answer = toLower(answer); /** changes "Hello !" to "hello  " **/
 			
 			if(answer == "quit()")
 			{
