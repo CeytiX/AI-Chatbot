@@ -13,10 +13,12 @@ Bot::Bot()
 	
 	/** usual sentences **/
 	
-	memory["Hello"]["Hi, how are you ?"] = 2;
-	memory["How are you ?"]["I'm fine, and you ?"] = 2;
-	memory["What's your name ?"]["My name is Turing"] = 50;
-	memory["I'm fine and you ?"]["Me too, thanks"] = 3;
+	memory["Hello"]["Hi, how are you ?"] = 4;
+	memory["How are you ?"]["I'm fine, and you ?"] = 4;
+	memory["What's your name ?"]["My name is Turing"] = 100;
+	memory["I'm fine and you ?"]["Me too, thanks"] = 6;
+	memory["Who are you ?"]["I'm Turing"] = 100;
+	
 }
 
 Bot::~Bot()
@@ -35,12 +37,13 @@ void Bot::talk()
 			cout << "Hello" << endl;
 			firstTime = false;
 			
-			cin.ignore();
 			getline(cin,answer);
 			
 			if(answer == "quit()")
 			{
 				quit = true;
+				answer = "";
+				firstTime = true;
 			}
 			else
 			{
@@ -58,6 +61,8 @@ void Bot::talk()
 			if(answer == "quit()")
 			{
 				quit = true;
+				answer = "";
+				firstTime = true;
 			}
 			else
 			{
@@ -148,9 +153,6 @@ void Bot::newAnswer(string sentence)
 				end = true;
 			}
 		}
-		
-		end = false;
-		pos = 0;
 	}
 	else /** if the bot doesn't know an answer, it adds this answer **/
 	{
