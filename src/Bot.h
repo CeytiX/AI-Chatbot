@@ -4,7 +4,6 @@ class Bot
 {
 	public:
 		Bot();
-		Bot(string);
 		~Bot();
 		void talk();
 		string answerTo(string);
@@ -12,7 +11,6 @@ class Bot
 
 	private:
 		map <string, map <string, int> > memory;
-		string name;
 		string answer;
 		bool firstTime;
 };

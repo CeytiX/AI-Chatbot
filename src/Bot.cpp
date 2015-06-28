@@ -8,18 +8,15 @@ using namespace std;
 
 Bot::Bot()
 {
-	name = "Turing";
-	memory["Bonjour"]["Bonjour, ça va ?"] = 2;
 	answer = "";
 	firstTime = true;
-}
-
-Bot::Bot(string NAME)
-{
-	name = NAME;
-	memory["Bonjour"]["Bonjour, ça va ?"] = 2;
-	answer = "";
-	firstTime = true;
+	
+	/** usual sentences **/
+	
+	memory["Hello"]["Hi, how are you ?"] = 2;
+	memory["How are you ?"]["I'm fine, and you ?"] = 2;
+	memory["What's your name ?"]["My name is Turing"] = 50;
+	memory["I'm fine and you ?"]["Me too, thanks"] = 3;
 }
 
 Bot::~Bot()
@@ -35,9 +32,10 @@ void Bot::talk()
 	{
 		if(firstTime)
 		{
-			cout << "Bonjour" << endl;
+			cout << "Hello" << endl;
 			firstTime = false;
-		
+			
+			cin.ignore();
 			getline(cin,answer);
 			
 			if(answer == "quit()")
@@ -46,7 +44,7 @@ void Bot::talk()
 			}
 			else
 			{
-				newAnswer("Bonjour"); /** add the answer to memory["Bonjour"] **/
+				newAnswer("Hello"); /** add the answer to memory["Bonjour"] **/
 			}
 		}
 		else
@@ -54,7 +52,7 @@ void Bot::talk()
 			string sentence = answerTo(answer); /** answer to the answer of the human **/
 			
 			cout << sentence << endl;
-		
+			
 			getline(cin, answer);
 		
 			if(answer == "quit()")
@@ -106,19 +104,18 @@ void Bot::newAnswer(string sentence)
 	if(memory[sentence] != voidMap) /** if the bot knows an answer **/
 	{
 		bool end (false);
-		int pos(0); /** pos in answer **/
+		unsigned int pos(0); /** pos in answer **/
 		
 		while(!end)
 		{		
 			string wordToTest("");
 			
-			while(answer[pos] != ' ' && answer[pos] != '\n' && pos <= answer.size())
+			while(answer[pos] != ' ' && answer[pos] != '\n' && pos < answer.size())
 			{
 				wordToTest += tolower(answer[pos]);
 				pos++;
 			}
 			pos++;
-			
 			
 			/** NEW WORD **/
 			
@@ -135,9 +132,12 @@ void Bot::newAnswer(string sentence)
 				
 				if(found != string::npos)
 				{
-					cout << "ok" << endl;
 					it->second++;
 					memory[sentence][answer]++;
+				}
+				else /** new answer **/
+				{
+					memory[sentence][answer] = 1;
 				}
 			}
 			
@@ -148,12 +148,12 @@ void Bot::newAnswer(string sentence)
 				end = true;
 			}
 		}
+		
+		end = false;
+		pos = 0;
 	}
 	else /** if the bot doesn't know an answer, it adds this answer **/
 	{
-		memory[sentence][answer] == 1;
+		memory[sentence][answer] = 1;
 	}
-	
-	cout << memory["Bonjour"]["Bonjour"] << endl;
-	cout << memory["Bonjour"]["Bonjour, ça va ?"] << endl;
 }

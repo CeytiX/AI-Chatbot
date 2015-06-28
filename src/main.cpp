@@ -3,7 +3,15 @@
 int main()
 {
 	Bot turing;
-	turing.talk();
+	
+	cout << "How many talks ?" << endl;
+	int talks;
+	cin >> talks;
+	
+	for(int i=0; i<talks; i++)
+	{
+		turing.talk();
+	}
 	
 	return 0;
 }
