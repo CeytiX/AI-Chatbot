@@ -30,6 +30,13 @@ Bot::Bot()
 	memory["I hate you !"]["You are a crazy man"] = 10
 	memory["I hate you"]["You are a crazy man"] = 10;
 	memory["What's up ?"]["I have eaten a chicken"] = 10;
+	memory["Do you love me ?"]["I don't love you, human"] = 10;
+	memory["Fine and you ?"]["I really happy !"] = 10;
+	memory["What are you doing ?"]["I'm talking with you"] = 10;
+	memory["I trust you"]["Do you want to be my friend ?"] = 10;
+	memory["Yes"]["I knowed you agree with me"] = 10;
+	memory["No"]["Why are you so bad with me ?"] = 10;
+	memory["Hi"]["No, say Hello"] = 10;
 	
 }
 
