@@ -13,11 +13,23 @@ Bot::Bot()
 	
 	/** usual sentences **/
 	
-	memory["Hello"]["Hi, how are you ?"] = 4;
-	memory["How are you ?"]["I'm fine, and you ?"] = 4;
+	memory["Hello"]["How are you ?"] = 10;
+	memory["How are you ?"]["I'm fine, and you ?"] = 10;
 	memory["What's your name ?"]["My name is Turing"] = 100;
-	memory["I'm fine and you ?"]["Me too, thanks"] = 6;
+	memory["I'm fine and you ?"]["Me too, thanks"] = 10;
 	memory["Who are you ?"]["I'm Turing"] = 100;
+	memory["I know"]["You know nothing Jon Snow"] = 10;
+	memory["I'm Turing"]["I don't trust you"] = 10;
+	memory["My name is Turing"]["I don't trust you"] = 10;
+	memory["I agree with you"]["Do you want to be my friend ?"] = 10;
+	memory["Do you want to be my friend ?"]["Yes I want"] = 10;
+	memory["You are my best friend"]["You too"] = 10;
+	memory["I love you"]["I want to get married with you"] = 10;
+	memory["Are you a bot ?"]["Yes, and my name is Turing"] = 10;
+	memory["I don't trust you"]["Are you kidding me ?"] = 10;
+	memory["I hate you !"]["You are a crazy man"] = 10
+	memory["I hate you"]["You are a crazy man"] = 10;
+	memory["What's up ?"]["I have eaten a chicken"] = 10;
 	
 }
 
