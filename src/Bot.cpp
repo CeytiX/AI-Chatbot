@@ -15,6 +15,7 @@ Bot::Bot()
 	
 	memory["Hello"]["How are you ?"] = 10;
 	memory["How are you ?"]["I'm fine, and you ?"] = 10;
+	memory["How are you ?"]["Fine and you ?"] = 5;
 	memory["What's your name ?"]["My name is Turing"] = 100;
 	memory["I'm fine and you ?"]["Me too, thanks"] = 10;
 	memory["Who are you ?"]["I'm Turing"] = 100;
@@ -37,7 +38,9 @@ Bot::Bot()
 	memory["Yes"]["I knowed you agree with me"] = 10;
 	memory["No"]["Why are you so bad with me ?"] = 10;
 	memory["Hi"]["No, say Hello"] = 10;
-	
+	memory["Yo"]["You think I'm your friend ?"] = 10;
+	memory["You are a bot"]["Yes, but everyone know it"] = 10;
+	memory["Nobody cares"]["I hate you stupid human"] = 10;
 }
 
 Bot::~Bot()
