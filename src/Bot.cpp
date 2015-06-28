@@ -14,36 +14,37 @@ Bot::Bot() /** constructor **/
 	
 	/** usual sentences **/
 	
-	memory["hello"]["how are you ?"] = 10;
-	memory["how are you ?"]["i'm fine, and you ?"] = 10;
-	memory["how are you ?"]["fine and you ?"] = 5;
-	memory["what's your name ?"]["my name is Turing"] = 100;
-	memory["i'm fine and you ?"]["me too, thanks"] = 10;
-	memory["who are you ?"]["i'm Turing"] = 100;
-	memory["i know"]["you know nothing Jon Snow"] = 10;
-	memory["i'm Turing"]["i don't trust you"] = 10;
-	memory["my name is Turing"]["i don't trust you"] = 10;
-	memory["i agree with you"]["do you want to be my friend ?"] = 10;
-	memory["do you want to be my friend ?"]["yes I want"] = 10;
-	memory["you are my best friend"]["you too"] = 10;
-	memory["i love you"]["i want to get married with you"] = 10;
-	memory["are you a bot ?"]["yes, and my name is Turing"] = 10;
-	memory["i don't trust you"]["are you kidding me ?"] = 10;
-	memory["i hate you"]["you are a crazy man"] = 10;
-	memory["what's up ?"]["i have eaten a chicken"] = 10;
-	memory["do you love me ?"]["i don't love you, human"] = 10;
-	memory["fine and you ?"]["i am really happy !"] = 10;
-	memory["what are you doing ?"]["i'm talking with you"] = 10;
-	memory["i trust you"]["do you want to be my friend ?"] = 10;
-	memory["yes"]["i knowed you agree with me"] = 10;
-	memory["no"]["why are you so bad with me ?"] = 10;
-	memory["hi"]["no, say Hello"] = 10;
-	memory["yo"]["you think I'm your friend ?"] = 10;
-	memory["you are a bot"]["yes, but everyone know it"] = 10;
-	memory["nobody cares"]["i hate you stupid human"] = 10;
-	memory["ok"]["why are you so bad with me ?"] = 10;
-	memory["ok"]["why are you so bad with me ?"] = 10;
-	memory["i don't care"]["ok."] = 10;
+	memory["hello"]["how are you ?"] = 5;
+	memory["how are you ?"]["i'm fine, and you ?"] = 5;
+	memory["how are you ?"]["fine and you ?"] = 3;
+	memory["what's your name ?"]["my name is Turing"] = 50;
+	memory["i'm fine and you ?"]["me too, thanks"] = 5;
+	memory["who are you ?"]["i'm Turing"] = 50;
+	memory["i know"]["you know nothing Jon Snow"] = 5;
+	memory["i'm Turing"]["i don't trust you"] = 5;
+	memory["my name is Turing"]["i don't trust you"] = 5;
+	memory["i agree with you"]["do you want to be my friend ?"] = 5;
+	memory["do you want to be my friend ?"]["yes I want"] = 5;
+	memory["you are my best friend"]["you too"] = 5;
+	memory["i love you"]["i want to get married with you"] = 5;
+	memory["are you a bot ?"]["yes, and my name is Turing"] = 5;
+	memory["i don't trust you"]["are you kidding me ?"] = 5;
+	memory["i hate you"]["you are a crazy man"] = 5;
+	memory["what's up ?"]["i have eaten a chicken"] = 5;
+	memory["do you love me ?"]["i don't love you, human"] = 5;
+	memory["fine and you ?"]["i am really happy !"] = 5;
+	memory["what are you doing ?"]["i'm talking with you"] = 5;
+	memory["i trust you"]["do you want to be my friend ?"] = 5;
+	memory["yes"]["i knowed you agree with me"] = 5;
+	memory["no"]["why are you so bad with me ?"] = 5;
+	memory["hi"]["no, say Hello"] = 5;
+	memory["yo"]["you think I'm your friend ?"] = 5;
+	memory["you are a bot"]["yes, but everyone know it"] = 5;
+	memory["nobody cares"]["i hate you stupid human"] = 5;
+	memory["ok"]["why are you so bad with me ?"] = 5;
+	memory["ok"]["why are you so bad with me ?"] = 5;
+	memory["i don't care"]["ok."] = 5;
+	memory["really ?"]["yes"] = 5;
 }
 
 Bot::~Bot() /** destructor **/
