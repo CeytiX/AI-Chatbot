@@ -3,15 +3,22 @@
 int main()
 {
 	Bot turing;
-	
-	cout << "How many talks ?" << endl;
-	int talks;
-	cin >> talks;
-	cin.ignore();
+	bool quit(false);
 
-	for(int i=0; i<talks; i++)
+	while(!quit)
 	{
 		turing.talk();
+		
+		cout << "(s)top or (c)ontinue ?" << endl;
+		
+		char choice;
+		cin >> choice;
+		cin.ignore();
+
+		if(choice == 's')
+		{
+			quit = true;
+		}
 	}
 	
 	return 0;
