@@ -3,52 +3,53 @@
 #include <map>
 #include <cctype>
 #include "Bot.h"
+#include "functions.cpp"
 
 using namespace std;
 
-Bot::Bot()
+Bot::Bot() /** constructor **/
 {
 	answer = "";
 	firstTime = true;
 	
 	/** usual sentences **/
 	
-	memory["Hello"]["How are you ?"] = 10;
-	memory["How are you ?"]["I'm fine, and you ?"] = 10;
-	memory["How are you ?"]["Fine and you ?"] = 5;
-	memory["What's your name ?"]["My name is Turing"] = 100;
-	memory["I'm fine and you ?"]["Me too, thanks"] = 10;
-	memory["Who are you ?"]["I'm Turing"] = 100;
-	memory["I know"]["You know nothing Jon Snow"] = 10;
-	memory["I'm Turing"]["I don't trust you"] = 10;
-	memory["My name is Turing"]["I don't trust you"] = 10;
-	memory["I agree with you"]["Do you want to be my friend ?"] = 10;
-	memory["Do you want to be my friend ?"]["Yes I want"] = 10;
-	memory["You are my best friend"]["You too"] = 10;
-	memory["I love you"]["I want to get married with you"] = 10;
-	memory["Are you a bot ?"]["Yes, and my name is Turing"] = 10;
-	memory["I don't trust you"]["Are you kidding me ?"] = 10;
-	memory["I hate you !"]["You are a crazy man"] = 10;
-	memory["I hate you"]["You are a crazy man"] = 10;
-	memory["What's up ?"]["I have eaten a chicken"] = 10;
-	memory["Do you love me ?"]["I don't love you, human"] = 10;
-	memory["Fine and you ?"]["I am really happy !"] = 10;
-	memory["What are you doing ?"]["I'm talking with you"] = 10;
-	memory["I trust you"]["Do you want to be my friend ?"] = 10;
-	memory["Yes"]["I knowed you agree with me"] = 10;
-	memory["No"]["Why are you so bad with me ?"] = 10;
-	memory["Hi"]["No, say Hello"] = 10;
-	memory["Yo"]["You think I'm your friend ?"] = 10;
-	memory["You are a bot"]["Yes, but everyone know it"] = 10;
-	memory["Nobody cares"]["I hate you stupid human"] = 10;
+	memory["hello"]["how are you ?"] = 10;
+	memory["how are you ?"]["i'm fine, and you ?"] = 10;
+	memory["how are you ?"]["fine and you ?"] = 5;
+	memory["what's your name ?"]["my name is Turing"] = 100;
+	memory["i'm fine and you ?"]["me too, thanks"] = 10;
+	memory["who are you ?"]["i'm Turing"] = 100;
+	memory["i know"]["you know nothing Jon Snow"] = 10;
+	memory["i'm Turing"]["i don't trust you"] = 10;
+	memory["my name is Turing"]["i don't trust you"] = 10;
+	memory["i agree with you"]["do you want to be my friend ?"] = 10;
+	memory["do you want to be my friend ?"]["yes I want"] = 10;
+	memory["you are my best friend"]["you too"] = 10;
+	memory["i love you"]["i want to get married with you"] = 10;
+	memory["are you a bot ?"]["yes, and my name is Turing"] = 10;
+	memory["i don't trust you"]["are you kidding me ?"] = 10;
+	memory["i hate you !"]["you are a crazy man"] = 10;
+	memory["i hate you"]["you are a crazy man"] = 10;
+	memory["what's up ?"]["i have eaten a chicken"] = 10;
+	memory["do you love me ?"]["i don't love you, human"] = 10;
+	memory["fine and you ?"]["i am really happy !"] = 10;
+	memory["what are you doing ?"]["i'm talking with you"] = 10;
+	memory["i trust you"]["do you want to be my friend ?"] = 10;
+	memory["yes"]["i knowed you agree with me"] = 10;
+	memory["no"]["why are you so bad with me ?"] = 10;
+	memory["hi"]["no, say Hello"] = 10;
+	memory["yo"]["you think I'm your friend ?"] = 10;
+	memory["you are a bot"]["yes, but everyone know it"] = 10;
+	memory["nobody cares"]["i hate you stupid human"] = 10;
 }
 
-Bot::~Bot()
+Bot::~Bot() /** destructor **/
 {
 	/** void **/
 }
 
-void Bot::talk()
+void Bot::talk() /** void talk() **/
 {
 	bool quit(false);
 	
@@ -60,6 +61,7 @@ void Bot::talk()
 			firstTime = false;
 			
 			getline(cin,answer);
+			answer = toLower(answer);
 			
 			if(answer == "quit()")
 			{
@@ -69,17 +71,18 @@ void Bot::talk()
 			}
 			else
 			{
-				newAnswer("Hello"); /** add the answer to memory["Bonjour"] **/
+				newAnswer("hello"); /** add the answer to memory["Bonjour"] **/
 			}
 		}
 		else
 		{
 			string sentence = answerTo(answer); /** answer to the answer of the human **/
 			
-			cout << sentence << endl;
+			cout << grower(sentence) << endl;
 			
 			getline(cin, answer);
-		
+			answer = toLower(answer);
+			
 			if(answer == "quit()")
 			{
 				quit = true;
@@ -94,7 +97,7 @@ void Bot::talk()
 	}
 }
 
-string Bot::answerTo(string sentence)
+string Bot::answerTo(string sentence) /** string answerTo() **/
 {
 	map<string, int>::iterator it;
 	
@@ -122,7 +125,7 @@ string Bot::answerTo(string sentence)
 	return answerToSay;
 }
 
-void Bot::newAnswer(string sentence)
+void Bot::newAnswer(string sentence) /** void newAnswer() **/
 {	
 	map<string, int>::iterator it;
 	
@@ -139,23 +142,16 @@ void Bot::newAnswer(string sentence)
 			
 			while(answer[pos] != ' ' && answer[pos] != '\n' && pos < answer.size())
 			{
-				wordToTest += tolower(answer[pos]);
+				wordToTest += answer[pos];
 				pos++;
 			}
 			pos++;
-			
+						
 			/** NEW WORD **/
 			
 			for(it = memory[sentence].begin(); it!=memory[sentence].end(); it++) /** test all answers to sentence **/
-			{
-				string lower(""); /** tolower of it->first **/
-				
-				for(unsigned int i=0; i<(it->first).size(); i++)
-				{
-					lower += tolower((it->first)[i]);
-				}
-				
-				size_t found = lower.find(wordToTest); /** does the word below to an existing answer ? **/
+			{				
+				size_t found = it->first.find(wordToTest); /** does the word below to an existing answer ? **/
 				
 				if(found != string::npos)
 				{
