@@ -28,7 +28,7 @@ Bot::Bot()
 	memory["I love you"]["I want to get married with you"] = 10;
 	memory["Are you a bot ?"]["Yes, and my name is Turing"] = 10;
 	memory["I don't trust you"]["Are you kidding me ?"] = 10;
-	memory["I hate you !"]["You are a crazy man"] = 10
+	memory["I hate you !"]["You are a crazy man"] = 10;
 	memory["I hate you"]["You are a crazy man"] = 10;
 	memory["What's up ?"]["I have eaten a chicken"] = 10;
 	memory["Do you love me ?"]["I don't love you, human"] = 10;
@@ -39,7 +39,7 @@ Bot::Bot()
 	memory["No"]["Why are you so bad with me ?"] = 10;
 	memory["Hi"]["No, say Hello"] = 10;
 	memory["Yo"]["You think I'm your friend ?"] = 10;
-	memory["You are a bot"]["Yes, but everyone know it"] = 10;
+	memory["You are a bot"]["Yes, but everyone know it"] = 10;
 	memory["Nobody cares"]["I hate you stupid human"] = 10;
 }
 
