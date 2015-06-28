@@ -1,3 +1,16 @@
+/**
+ * ========================
+ * 
+ * Filename: main.cpp
+ * 
+ * Author: Ceytix <ceytix@mailoo.org>
+ * 
+ * Description: main function
+ * 
+ * Created: 27/06/15
+ * =========================
+ **/
+ 
 #include "Bot.cpp"
 
 int main()

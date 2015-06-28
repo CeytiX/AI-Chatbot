@@ -1,3 +1,16 @@
+/**
+ * ========================
+ * 
+ * Filename: Bot.cpp
+ * 
+ * Author: Ceytix <ceytix@mailoo.org>
+ * 
+ * Description: Bot class
+ * 
+ * Created: 27/06/15
+ * =========================
+ **/
+ 
 #include <iostream>
 #include <string>
 #include <map>

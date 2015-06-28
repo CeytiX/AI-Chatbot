@@ -1,3 +1,16 @@
+/**
+ * ========================
+ * 
+ * Filename: Bot.h
+ * 
+ * Author: Ceytix <ceytix@mailoo.org>
+ * 
+ * Description: Bot class header
+ * 
+ * Created: 27/06/15
+ * =========================
+ **/
+ 
 using namespace std;
 
 class Bot

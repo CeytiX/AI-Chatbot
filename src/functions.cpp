@@ -1,3 +1,16 @@
+/**
+ * ========================
+ * 
+ * Filename: functions.cpp
+ * 
+ * Author: Ceytix <ceytix@mailoo.org>
+ * 
+ * Description: many functions which allow us to change easily strings
+ * 
+ * Created: 28/06/15
+ * =========================
+ **/
+ 
 #include <string>
 #include <cctype>
 #include "functions.h"
