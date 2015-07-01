@@ -56,7 +56,7 @@ Bot::Bot() /** constructor **/
 		memory["no"]["why are you so bad with me ?"] = 5;
 		memory["hi"]["no, say Hello"] = 5;
 		memory["yo"]["do you think I am your friend ?"] = 5;
-		memory["you are a bot"]["yes, but everyone know it"] = 5;
+		memory["you are a bot"]["you are crazy !"] = 5;
 		memory["nobody cares"]["i hate you stupid guy"] = 5;
 		memory["ok"]["why are you so bad with me ?"] = 5;
 		memory["ok."]["i think i will hit you"] = 5;
