@@ -100,7 +100,7 @@ void Bot::talk() /** void talk() **/
 			}
 			else
 			{
-				newAnswer("hello"); /** add the answer to memory["Bonjour"] **/
+				newAnswer("hello"); /** add the answer to memory["hello"] **/
 			}
 		}
 		else
@@ -170,6 +170,7 @@ void Bot::newAnswer(string sentence) /** void newAnswer() **/
 		while(!end)
 		{		
 			string wordToTest("");
+			bool knownWord(false);
 			
 			while(answer[pos] != ' ' && answer[pos] != '\n' && pos < answer.size())
 			{
@@ -188,10 +189,7 @@ void Bot::newAnswer(string sentence) /** void newAnswer() **/
 				{
 					it->second++;
 					memory[sentence][answer]++;
-				}
-				else /** new answer **/
-				{
-					memory[sentence][answer] = 1;
+					knownWord = true;
 				}
 			}
 			
@@ -205,8 +203,10 @@ void Bot::newAnswer(string sentence) /** void newAnswer() **/
 	}
 	else /** if the bot doesn't know an answer, it adds this answer **/
 	{
-		memory[sentence][answer] = 1;
+		knownWord = false;
 	}
+	
+	if(!knownWord) memory[sentence][answer]=1;
 }
 
 /**************
