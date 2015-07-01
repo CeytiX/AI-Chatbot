@@ -228,12 +228,10 @@ void Bot::load()
 	{	
 		string fileName = "memory/sentences/" + sentences.front();
 		ifstream file(fileName.c_str());
+		string answer_sentence;
 		
-		for(int i=0; i<5; i++) /** just 5 answers for each question **/
+		while(getline(file, answer_sentence))
 		{	
-			string answer_sentence;
-			getline(file, answer_sentence);
-			
 			int value;
 			string svalue;
 			getline(file, svalue);
