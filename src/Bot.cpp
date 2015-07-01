@@ -98,10 +98,6 @@ void Bot::talk() /** void talk() **/
 				answer = "";
 				firstTime = true;
 			}
-			else
-			{
-				newAnswer("hello"); /** add the answer to memory["hello"] **/
-			}
 		}
 		else
 		{
