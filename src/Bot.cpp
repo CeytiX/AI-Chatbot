@@ -226,12 +226,10 @@ void Bot::load()
 	
 	while(!sentences.empty())
 	{	
-		bool finished(false);
-		
 		string fileName = "memory/sentences/" + sentences.front();
 		ifstream file(fileName.c_str());
 		
-		while(!finished) /** for each sentence found in "memory/memory.txt" **/
+		for(int i=0; i<5; i++) /** just 5 answers for each question **/
 		{	
 			string answer_sentence;
 			getline(file, answer_sentence);
@@ -239,11 +237,9 @@ void Bot::load()
 			int value;
 			string svalue;
 			getline(file, svalue);
-			value = stoi(svalue);
+			value = atoi(svalue.c_str());
 			
 			memory[sentences.front()][answer_sentence] = value;
-			
-			if(file.tellg() == file.end) finished = true;
 		}
 		
 		sentences.pop();
