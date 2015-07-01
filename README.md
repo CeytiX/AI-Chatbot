@@ -1,5 +1,5 @@
 # AI-Chatbot
-[0.2.1] [C++] A Simple Chatbot
+[C++] A Simple Chatbot
 
 ___
 
