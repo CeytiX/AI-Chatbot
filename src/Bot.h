@@ -21,6 +21,8 @@ class Bot
 		void talk();
 		string answerTo(string);
 		void newAnswer(string);
+		void load(); /** load all memory **/
+		void save(); /** save all memory **/
 
 	private:
 		map <string, map <string, int> > memory;

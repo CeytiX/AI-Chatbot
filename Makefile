@@ -1,6 +1,6 @@
 CC = g++
 EXEC = AI-Chatbot
-FLAGS = -Wall
+FLAGS = -Wall -std=c++11
 LIBS =
 
 all:

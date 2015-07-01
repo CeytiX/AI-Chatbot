@@ -12,7 +12,9 @@
  **/
  
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <queue>
 #include <map>
 #include "Bot.h"
 #include "functions.cpp"
@@ -26,39 +28,49 @@ Bot::Bot() /** constructor **/
 	
 	/** usual sentences **/
 	
-	memory["hello"]["how are you ?"] = 5;
-	memory["how are you ?"]["i'm fine, and you ?"] = 5;
-	memory["how are you ?"]["fine and you ?"] = 3;
-	memory["what's your name ?"]["it is a secret"] = 5;
-	memory["i'm fine and you ?"]["me too, thanks"] = 5;
-	memory["who are you ?"]["i'm an unkown man"] = 50;
-	memory["i know"]["you know nothing Jon Snow"] = 5;
-	memory["i agree with you"]["do you want to be my friend ?"] = 5;
-	memory["do you want to be my friend ?"]["yes I want"] = 5;
-	memory["you are my best friend"]["you too"] = 5;
-	memory["i love you"]["i want to get married with you"] = 5;
-	memory["are you a bot ?"]["no, of course"] = 5;
-	memory["i don't trust you"]["are you kidding me ?"] = 5;
-	memory["i hate you"]["you are a crazy man"] = 5;
-	memory["what's up ?"]["i have eaten a chicken"] = 5;
-	memory["do you love me ?"]["i don't love you, guy"] = 5;
-	memory["fine and you ?"]["i am really happy !"] = 5;
-	memory["what are you doing ?"]["i am talking with you"] = 5;
-	memory["i trust you"]["do you want to be my friend ?"] = 5;
-	memory["yes"]["i knowed you agree with me"] = 5;
-	memory["no"]["why are you so bad with me ?"] = 5;
-	memory["hi"]["no, say Hello"] = 5;
-	memory["yo"]["do you think I am  your friend ?"] = 5;
-	memory["you are a bot"]["yes, but everyone know it"] = 5;
-	memory["nobody cares"]["i hate you stupid guy"] = 5;
-	memory["ok"]["why are you so bad with me ?"] = 5;
-	memory["ok."]["i think i will hit you"] = 5;
-	memory["i don't care"]["ok."] = 5;
-	memory["really ?"]["yes"] = 5;
-	memory["thank you"]["your welcome"] = 5;
-	memory["i don't know"]["why don't you know ?"] = 5;
-	memory["you are very nice"]["i know"] = 5;
-	memory["why ?"]["i don't want to say it"] = 5;
+	string empty;
+	ifstream log("memory/memory.txt");
+	
+	if(!log)
+	{
+		memory["hello"]["how are you ?"] = 5;
+		memory["how are you ?"]["i'm fine, and you ?"] = 5;
+		memory["how are you ?"]["fine and you ?"] = 3;
+		memory["what's your name ?"]["it is a secret"] = 5;
+		memory["i'm fine and you ?"]["me too, thanks"] = 5;
+		memory["who are you ?"]["i'm an unkown man"] = 50;
+		memory["i know"]["you know nothing Jon Snow"] = 5;
+		memory["i agree with you"]["do you want to be my friend ?"] = 5;
+		memory["do you want to be my friend ?"]["yes I want"] = 5;
+		memory["you are my best friend"]["you too"] = 5;
+		memory["i love you"]["i want to get married with you"] = 5;
+		memory["are you a bot ?"]["no, of course"] = 5;
+		memory["i don't trust you"]["are you kidding me ?"] = 5;
+		memory["i hate you"]["you are a crazy man"] = 5;
+		memory["what's up ?"]["i have eaten a chicken"] = 5;
+		memory["do you love me ?"]["i don't love you, guy"] = 5;
+		memory["fine and you ?"]["i am really happy !"] = 5;
+		memory["what are you doing ?"]["i am talking with you"] = 5;
+		memory["i trust you"]["do you want to be my friend ?"] = 5;
+		memory["yes"]["i knowed you agree with me"] = 5;
+		memory["no"]["why are you so bad with me ?"] = 5;
+		memory["hi"]["no, say Hello"] = 5;
+		memory["yo"]["do you think I am  your friend ?"] = 5;
+		memory["you are a bot"]["yes, but everyone know it"] = 5;
+		memory["nobody cares"]["i hate you stupid guy"] = 5;
+		memory["ok"]["why are you so bad with me ?"] = 5;
+		memory["ok."]["i think i will hit you"] = 5;
+		memory["i don't care"]["ok."] = 5;
+		memory["really ?"]["yes"] = 5;
+		memory["thank you"]["your welcome"] = 5;
+		memory["i don't know"]["why don't you know ?"] = 5;
+		memory["you are very nice"]["i know"] = 5;
+		memory["why ?"]["i don't want to say it"] = 5;
+	}
+	else
+	{
+		load(); /** load all the memory from files **/
+	}
 }
 
 Bot::~Bot() /** destructor **/
@@ -112,6 +124,8 @@ void Bot::talk() /** void talk() **/
 			}
 		}
 	}
+	
+	save(); /** save all the memory into files **/
 }
 
 string Bot::answerTo(string sentence) /** string answerTo() **/
@@ -192,5 +206,71 @@ void Bot::newAnswer(string sentence) /** void newAnswer() **/
 	else /** if the bot doesn't know an answer, it adds this answer **/
 	{
 		memory[sentence][answer] = 1;
+	}
+}
+
+/**************
+* void load() *
+**************/
+
+void Bot::load()
+{
+	ifstream log("memory/memory.txt");
+	queue<string> sentences;
+	string sentence;
+	
+	while(getline(log, sentence)) /** load of all sentences **/
+	{
+		sentences.push(sentence);
+	}
+	
+	while(!sentences.empty())
+	{	
+		bool finished(false);
+		
+		string fileName = "memory/sentences/" + sentences.front();
+		ifstream file(fileName.c_str());
+		
+		while(!finished) /** for each sentence found in "memory/memory.txt" **/
+		{	
+			string answer_sentence;
+			getline(file, answer_sentence);
+			
+			int value;
+			string svalue;
+			getline(file, svalue);
+			value = stoi(svalue);
+			
+			memory[sentences.front()][answer_sentence] = value;
+			
+			if(file.tellg() == file.end) finished = true;
+		}
+		
+		sentences.pop();
+	}
+}
+
+/**************
+* void save() *
+**************/
+
+void Bot::save()
+{
+	map<string, map <string, int> >::iterator it1;
+	map<string, int>::iterator it2;
+	
+	ofstream log("memory/memory.txt");
+	
+	for(it1 = memory.begin(); it1!=memory.end(); it1++)
+	{
+		log << it1->first << endl;
+		
+		string fileName = "memory/sentences/" + it1->first;
+		ofstream file(fileName.c_str());
+		
+		for(it2 = memory[it1->first].begin(); it2!=memory[it1->first].end(); it2++)
+		{
+			file << it2->first << endl << it2->second << endl;
+		}
 	}
 }
