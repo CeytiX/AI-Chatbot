@@ -41,7 +41,7 @@ Bot::Bot() /** constructor **/
 	memory["i don't trust you"]["are you kidding me ?"] = 5;
 	memory["i hate you"]["you are a crazy man"] = 5;
 	memory["what's up ?"]["i have eaten a chicken"] = 5;
-	memory["do you love me ?"]["i don't love you, human"] = 5;
+	memory["do you love me ?"]["i don't love you, guy"] = 5;
 	memory["fine and you ?"]["i am really happy !"] = 5;
 	memory["what are you doing ?"]["i am talking with you"] = 5;
 	memory["i trust you"]["do you want to be my friend ?"] = 5;
@@ -50,7 +50,7 @@ Bot::Bot() /** constructor **/
 	memory["hi"]["no, say Hello"] = 5;
 	memory["yo"]["do you think I am  your friend ?"] = 5;
 	memory["you are a bot"]["yes, but everyone know it"] = 5;
-	memory["nobody cares"]["i hate you stupid human"] = 5;
+	memory["nobody cares"]["i hate you stupid guy"] = 5;
 	memory["ok"]["why are you so bad with me ?"] = 5;
 	memory["ok."]["i think i will hit you"] = 5;
 	memory["i don't care"]["ok."] = 5;
