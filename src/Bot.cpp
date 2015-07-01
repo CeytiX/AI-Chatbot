@@ -161,6 +161,8 @@ void Bot::newAnswer(string sentence) /** void newAnswer() **/
 	map<string, int>::iterator it;
 	
 	map<string, int> voidMap;
+
+	bool knownWord;
 	
 	if(memory[sentence] != voidMap) /** if the bot knows an answer **/
 	{
@@ -170,8 +172,9 @@ void Bot::newAnswer(string sentence) /** void newAnswer() **/
 		while(!end)
 		{		
 			string wordToTest("");
-			bool knownWord(false);
 			
+			knownWord = false;
+	
 			while(answer[pos] != ' ' && answer[pos] != '\n' && pos < answer.size())
 			{
 				wordToTest += answer[pos];
