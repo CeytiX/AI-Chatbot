@@ -16,6 +16,10 @@
 #include <string>
 #include <queue>
 #include <map>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+
 #include "Bot.h"
 #include "functions.cpp"
 
@@ -23,6 +27,8 @@ using namespace std;
 
 Bot::Bot() /** constructor **/
 {
+	srand(time(nullptr));
+	
 	answer = "";
 	firstTime = true;
 	
@@ -127,11 +133,18 @@ void Bot::talk() /** void talk() **/
 string Bot::answerTo(string sentence) /** string answerTo() **/
 {
 	map<string, int>::iterator it;
+	map <string, map <string, int> >::iterator it2;
 	
 	map<string, int> voidMap;
 	
 	string answerToSay("");
 	int max(0);
+	int max2(0);
+	int max3(0);
+	
+	string answer1("");
+	string answer2("");
+	string answer3("");
 	
 	if(memory[sentence] != voidMap) /** if the bot knows an answer **/
 	{
@@ -140,13 +153,72 @@ string Bot::answerTo(string sentence) /** string answerTo() **/
 			if(it->second > max)
 			{
 				max = it->second;
-				answerToSay = it->first;
+				answer1 = it->first;
 			}
 		}
+		for(it = memory[sentence].begin(); it!=memory[sentence].end(); it++) /** test all answers to sentence **/
+		{
+			if(it->first != answer1 && it->second > max2)
+			{
+				max2 = it->second;
+				answer2 = it->first;
+			}
+		}
+		for(it = memory[sentence].begin(); it!=memory[sentence].end(); it++) /** test all answers to sentence **/
+		{
+			if(it->first != answer1 && it->first != answer2 && it->second > max3)
+			{
+				max3 = it->second;
+				answer3 = it->first;
+			}
+		}
+		
+		switch(rand()%3)
+		{
+			case 0:
+				answerToSay = answer1;
+				break;
+			
+			case 1:
+				answerToSay = answer2;
+				break;
+			
+			case 2:
+				answerToSay = answer3;
+				break;
+			
+			default:
+				break;
+		}
 	}
-	else /** if the bot doesn't know an answer, it repeats the sentence of the human **/
-	{
-		answerToSay = sentence;
+	else /** if the bot doesn't know an answer, it gives a random sentence for which it has no answer **/
+	{	
+		vector<string> pAnswers {};
+		
+		
+		for(it2 = memory.begin(); it2!=memory.end(); it2++) /** test all sentences **/
+		{
+			if(it2->second.empty() || it2->second.size() == 1 || it2->second.size() == 2)
+			{
+				pAnswers.push_back(it2->first);
+			}
+		}
+		
+		bool random {false};
+		
+		for(unsigned int i = 0; i < pAnswers.size(); i++)
+		{
+			if(!random && rand()%pAnswers.size() == 0)
+			{
+				answerToSay = pAnswers[i];
+				random = true;
+			}
+		}
+		
+		if(!random)
+		{
+			answerToSay = pAnswers[0];
+		}
 	}
 	
 	return answerToSay;

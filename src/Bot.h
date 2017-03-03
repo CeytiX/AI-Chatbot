@@ -10,7 +10,7 @@
  * Created: 27/06/15
  * =========================
  **/
- 
+
 using namespace std;
 
 class Bot
